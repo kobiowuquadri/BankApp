@@ -22,9 +22,7 @@ const {
 const {
   checkBalance,
 } = require("../middlewares/accountMiddlewares/checkBalance");
-const {
-  sendNotification,
-} = require("../middlewares/notificationMiddleware/sendNotificationMiddleware");
+
 const {
   authAdminProtect,
 } = require("../middlewares/adminMiddlewares/authAdminsMiddleware");
@@ -32,7 +30,7 @@ const {
   checkUserStatus,
 } = require("../middlewares/userMiddleware/checkUserStatus");
 
-router.route("/create").post(authAdminProtect, createAccount, sendNotification);
+router.route("/create").post(authAdminProtect, createAccount);
 
 router
   .route("/:id")
@@ -48,7 +46,6 @@ router
     checkAccount,
     checkBalance,
     transfer,
-    sendNotification
   );
 
 router

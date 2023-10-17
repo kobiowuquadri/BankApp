@@ -18,9 +18,7 @@ const {
   createAccountRequest,
   deleteAccountRequest,
 } = require("../controllers/accountRequestController");
-const {
-  sendNotification,
-} = require("../middlewares/notificationMiddleware/sendNotificationMiddleware");
+
 const {
   checkBalance,
 } = require("../middlewares/accountMiddlewares/checkBalance");
@@ -41,12 +39,11 @@ router
     checkPassword,
     checkBalance,
     checkExistingAccountRequest,
-    createAccountRequest,
-    sendNotification
+    createAccountRequest
   );
 
 router
   .route("/:id")
-  .delete(authAdminProtect, deleteAccountRequest, sendNotification);
+  .delete(authAdminProtect, deleteAccountRequest);
 
 module.exports = router;

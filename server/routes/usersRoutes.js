@@ -46,8 +46,4 @@ router.route("/login").post(userLogin);
 
 router.route("/:id/updatestatus").put(authAdminProtect, updateUserStatus);
 
-router
-  .route("/notifications/:id")
-  .put(authUserProtect, checkUserStatus);
-
 module.exports = router;

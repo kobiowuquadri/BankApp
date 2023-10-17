@@ -12,7 +12,6 @@ const { connectToMongoose } = require("./config/db");
 //express json parser middleware
 app.use(express.json());
 
-
 //users Router
 const usersRoute = require("./routes/usersRoutes");
 app.use("/api/users", usersRoute);

@@ -1,0 +1,504 @@
+/* Desktop Design
+#################
+START!!!!!!!!!!!!
+#################
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+  }
+  
+  /* Variables */
+  :root {
+    --Dark_Blue: hsl(233, 26%, 24%);
+    --Lime_Green: hsl(136, 65%, 51%);
+    --Bright_Cyan: hsl(192, 70%, 51%);
+    --Grayish_Blue: hsl(233, 8%, 62%);
+    --Light_Grayish_Blue: hsl(220, 16%, 96%);
+    --Very_Light_Gray: hsl(0, 0%, 98%);
+    --White: hsl(0, 0%, 100%);
+    --font_size_body: 18px;
+    --blend_bg:linear-gradient(to right, var(--Lime_Green), var(--Bright_Cyan));
+  }
+  
+  body {
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, supported by Chrome and Opera */
+    font-family: 'Public Sans', sans-serif;
+    font-size: var(--font_size_body);
+    overflow-x: hidden;
+  }
+  
+  
+  h1 {
+    font-size: 3rem;
+    color: var(--Dark_Blue);
+  }
+  
+  p{
+    font-size: 1rem;
+    color: var(--Grayish_Blue);
+  }
+  
+  
+  /* Navbar Section */
+  header {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.2rem 5rem;
+      background-color: var(--Very_Light_Gray);
+      align-items: center;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      z-index: 2;
+      top: 0;
+      /* display: none; */
+    
+  }
+  
+  .navbar ul {
+      display: flex;
+      gap: 50px;
+  }
+  
+  .nav_link{
+      color: var(--Grayish_Blue);
+       font-size: var(--font_size_body);
+  }
+  
+  .nav_link:hover{
+      padding-bottom: 20px;
+      border-bottom: 5px solid var(--Bright_Cyan);
+  }
+  
+  
+  #btn_request {
+      background-image: var(--blend_bg);
+      width: fit-content;
+      height: fit-content;
+      padding: 15px 35px;
+      border: none;
+      border-radius: 50px;
+      cursor:pointer;
+      color: var(--White);
+  }
+  
+  #btn_request:hover{
+      opacity: 0.5;
+  }
+  
+  #menu{
+    display: none;
+  }
+  
+  /* Navcard Section */
+  
+  .navcard{
+    background-color: var(--Light_Grayish_Blue);
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    border-radius: 10px;
+    z-index: 999;
+    width: 90%;
+    display: none;
+  
+  }
+  
+  .navcard ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    padding: 30px;
+    justify-content: center;
+  }
+  
+  .navcard a {
+    color: var(--Dark_Blue);
+    font-size: 1.5rem;
+  }
+  
+  .show{
+    display: flex;
+  }
+  
+  .rotate{
+    transform: rotate(45deg);
+  }
+  
+  /* Next generation Section */
+  
+  .next_generation {
+    display: flex;
+    width: 100%;
+    /* justify-content: space-between; */
+  }
+  
+  .next_generation_content {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    gap: 30px;
+    padding-left: 70px;
+  }
+  
+  .next_generation_content button {
+      background-image: var(--blend_bg);
+      width: fit-content;
+      height: fit-content;
+      padding: 15px 35px;
+      border: none;
+      border-radius: 50px;
+      cursor:pointer;
+      color: var(--White);
+  }
+  
+  .next_generation_content button:hover {
+    opacity: 0.8;
+  }
+  
+  
+  .next_generation_image {
+    background: url(../images/bg-intro-desktop.svg) no-repeat center;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    right: -120px;
+    top: -50px;
+  }
+  
+  .next_generation_image img {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+  }
+  
+  
+  /* Why choose Easybank Section */
+  
+  .why_choose_easybank {
+    margin-top: 100px;
+    background-color: var(--Light_Grayish_Blue);
+    height: 100%;
+  }
+  
+  .why_choose_easybank_content {
+     padding: 80px;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     width: 55%;
+  }
+  
+  .why_choose_easybank_flex {
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+    padding: 0px 80px 80px 80px;
+  }
+  
+  .why_choose_easybank_flex h1 {
+    font-size: 1.5rem;
+  }
+  
+  .why_choose_easybank_flex p {
+    word-spacing: 2px;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
+  
+  
+  /* Latest Articles Section */
+  
+  .latest_articles {
+    padding: 80px;
+  }
+  
+  .latest_articles_lists {
+    display: flex;
+    padding-top: 50px;
+    gap: 30px;
+  }
+  
+  figure{
+    background-color: var(--Very_Light_Gray);
+    border-radius: 10px;
+  }
+  
+  
+  figcaption h1 {
+    padding:5px;
+    font-size: 1.3rem;
+  }
+  
+  figcaption h1:hover{
+    cursor: pointer;
+    color: var(--Lime_Green);
+  }
+  
+  figcaption p {
+    padding: 5px;
+  }
+  
+  pre{
+    font-size: .7rem;
+  }
+  
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  figure img {
+    width: 280px;
+    height: 200px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+  
+  
+  /* Footer Section  */
+  
+  footer {
+    background-color: var(--Dark_Blue);
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 100px 50px 100px;
+  }
+  
+  #btn_footer {
+    background-image: var(--blend_bg);
+    width: fit-content;
+    height: fit-content;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    cursor:pointer;
+    color: var(--White);
+  }
+  
+  #btn_footer:hover {
+    opacity: 0.7;
+  }
+  
+  .footer_links {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+  }
+  
+  .footer_links ol img:hover{
+    background-color: var(--Lime_Green);
+  }
+  
+  .footer_links li {
+    padding: 10px;
+  }
+  
+  .footer_links a {
+    color: var(--Very_Light_Gray);
+  }
+  
+  .footer_links a:hover{
+    color: var(--Lime_Green);
+  }
+  
+  .link_1 ol{
+    display: flex;
+  } 
+  
+  .link_4 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  
+  
+  /* Desktop Design
+  ###############
+  END!!!!!!!!!!!!
+  ###############
+  */
+  
+  /* Mobile Responsive
+  ##################
+  START!!!!!!!!!!!!!
+  ##################
+  */
+  
+  @media (max-width:768px){
+    /* Navbar Section */
+    h1 {
+      font-size: 2rem;
+    }
+    header {
+      padding: 1.2rem 1.5rem;
+    }
+  
+    .navbar ul, #btn_request {
+      display: none;
+    }
+  
+    #menu {
+      display: flex;
+    }
+  
+    /* Next generation Section */
+  
+    .next_generation{
+      flex-direction: column-reverse;
+    }
+  
+    .next_generation_image{
+      background: url(../images/bg-intro-mobile.svg) no-repeat center;
+      background-size: cover;
+      width: 100%;
+      right: 0px;
+      top: 0px;
+    }
+  
+    .next_generation_image img{
+      width: 100%;
+    }
+  
+    .next_generation_content{
+      width: 100%;
+      padding:20px;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    /* Why choose Easybank Section */
+  
+    .why_choose_easybank_content{
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+    }
+  
+    .why_choose_easybank_flex{
+      padding:20px;
+      flex-direction: column;
+    }
+  
+    .content{
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    /* Latest Articles Section */
+  
+    .latest_articles{
+      padding: 20px;
+    }
+  
+    .latest_articles_lists{
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    figure img{
+      width: 100%;
+      height: 100%;
+    }
+  
+    /* Footer Section  */
+  
+    footer {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      text-align:center;
+    }
+  
+    .footer_links{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0px;
+      text-align: center;
+    }
+  
+    #btn_footer{
+      width: 100%;
+    }
+  
+  
+  
+  
+  
+    
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* Mobile Responsive
+  #################
+  DONE!!!!!!!!!!!!!
+  #################
+  */
+  

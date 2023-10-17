@@ -1,59 +1,67 @@
 import React from 'react'
 import './home.scss'
-
-
-
+import logo from '../../assets/images/logo.svg'
+import mockUp from '../../assets/images/image-mockups.png'
+import online from '../../assets/images/icon-online.svg'
+import budgeting from '../../assets/images/icon-budgeting.svg'
+import boarding from '../../assets/images/icon-onboarding.svg'
+import apiIcon from '../../assets/images/icon-api.svg'
+import currency from '../../assets/images/image-currency.jpg'
+import restaurant from '../../assets/images/image-restaurant.jpg'
+import plane from '../../assets/images/image-plane.jpg'
+import confettti from '../../assets/images/image-confetti.jpg'
+import footerLogo from '../../assets/images/footer_logo.svg'
+import youtubeIcon from '../../assets/images/icon-youtube.svg'
+import twitterIcon from '../../assets/images/icon-twitter.svg'
+import pinterestIcon from '../../assets/images/icon-pinterest.svg'
+import instagramIcon from '../../assets/images/icon-instagram.svg'
 
 
 function Home() {
   return (
     <div>
       <header>
-      <img src="./images/logo.svg" alt="" />
-      <nav class="navbar">
+      <img src={logo} alt="" />
+      <nav className="navbar">
         <ul>
-          <li><a href="javascript:void()" class="nav_link">Home</a></li>
-          <li><a href="javascript:void()" class="nav_link">About</a></li>
-          <li><a href="javascript:void()" class="nav_link">Contact</a></li>
-          <li><a href="javascript:void()" class="nav_link">Blog</a></li>
-          <li><a href="javascript:void()" class="nav_link">Careers</a></li>
+          <li><a href="#" className="nav_link">Home</a></li>
+          <li><a href="#" className="nav_link">About</a></li>
+          <li><a href="#" className="nav_link">Login</a></li>
         </ul>
-        <a href="javascript:void()"></a>
+        <a href="#"></a>
       </nav>
-      <button id="btn_request">Request Invite</button>
+      <button id="btn_request">Register</button>
       <div id="menu">
 
       </div>
     </header>
 
-    <div class="navcard">
+    <div className="navcard">
       <ul>
-        <li><a href="javascript:void()" class="navcard_link">Home</a></li>
-        <li><a href="javascript:void()" class="navcard_link">About</a></li>
-        <li><a href="javascript:void()" class="navcard_link">Contact</a></li>
-        <li><a href="javascript:void()" class="navcard_link">Blog</a></li>
-        <li><a href="javascript:void()" class="navcard_link">Careers</a></li>
+        <li><a href="#" className="navcard_link">Home</a></li>
+        <li><a href="#" className="navcard_link">About</a></li>
+        <li><a href="#" className="navcard_link">Login</a></li>
       </ul>
     </div>
 
     {/* <!--  Next generation Section --> */}
-   <div class="next_generation">
-    <div class="next_generation_content">
-      <h1 class="animate__animated animate__bounceInDown animate__delay-1s">Next generation digital banking</h1>
-      <p class="animate__animated animate__backInLeft animate__delay-1.2s">
+   <div className="next_generation">
+    <div className="next_generation_content">
+      <h1 className="animate__animated animate__bounceInDown animate__delay-1s">Next generation digital banking</h1>
+      <p className="animate__animated animate__backInLeft animate__delay-1.2s">
         Take your financial life online. Your Easybank account will be a one-stop-shop 
         for spending, saving, budgeting, investing, and much more.
       </p>
-      <button class="animate__animated animate__backInLeft animate__delay-1.5s">Request Invite</button>
+      <button className="animate__animated animate__backInLeft animate__delay-1.5s">Request Invite</button>
     </div>
-    <div class="next_generation_image">
-       <img src="./images/image-mockups.png" alt=""/>
+    <div className="next_generation_image">
+       <img src={mockUp} alt=""/>
     </div>
    </div>
 
    {/* <!-- Why choose Easybank Section --> */}
-   <div class="why_choose_easybank">
-     <div class="why_choose_easybank_content" data-aos="fade-right">
+   <div className="why_choose_easybank">
+     <div className="why_choose_easybank_content" data-aos="fade-right">
        <h1>Why choose Easybank?</h1>
        <p>
         We leverage Open Banking to turn your bank account into your financial hub. Control
@@ -61,9 +69,9 @@ function Home() {
        </p>
      </div>
 
-     <div class="why_choose_easybank_flex">
-       <div class="online_banking content" data-aos="zoom-in">
-        <img src="./images/icon-online.svg" alt=""/>
+     <div className="why_choose_easybank_flex">
+       <div className="online_banking content" data-aos="zoom-in">
+        <img src={online} alt=""/>
         <h1> Online Banking</h1>
         <p>
           
@@ -72,8 +80,8 @@ function Home() {
         </p>
        </div>
 
-       <div class="simple_budgeting content" data-aos="zoom-in">
-        <img src="./images/icon-budgeting.svg" alt=""/>
+       <div className="simple_budgeting content" data-aos="zoom-in">
+        <img src={budgeting} alt=""/>
         <h1>Simple Budgeting</h1>
         <p>
           See exactly where your money goes each month. Receive notifications when you’re 
@@ -81,8 +89,8 @@ function Home() {
         </p>
        </div>
 
-       <div class="fast_onboarding content" data-aos="zoom-in">
-        <img src="./images/icon-onboarding.svg" alt=""/>
+       <div className="fast_onboarding content" data-aos="zoom-in">
+        <img src={boarding} alt=""/>
         <h1>Fast Onboarding</h1>
         <p>
           We don’t do branches. Open your account in minutes online and start taking control 
@@ -90,8 +98,8 @@ function Home() {
         </p>
        </div>
 
-       <div class="open_api content" data-aos="zoom-in">
-        <img src="./images/icon-api.svg" alt=""/>
+       <div className="open_api content" data-aos="zoom-in">
+        <img src={apiIcon} alt=""/>
         <h1>Open API</h1>
         <p>
           Manage your savings, investments, pension, and much more from one account. Tracking 
@@ -105,16 +113,16 @@ function Home() {
 
    {/* <!-- Latest Articles Section --> */}
 
-   <div class="latest_articles">
-      <div class="latest_articles_content">
+   <div className="latest_articles">
+      <div className="latest_articles_content">
         <h1>
           Latest Articles
         </h1>
       </div>
 
-      <div class="latest_articles_lists">
+      <div className="latest_articles_lists">
         <figure  data-aos="fade-right">
-          <img src="./images/image-currency.jpg" alt=""/>
+          <img src={currency} alt=""/>
           <figcaption>
             <pre>By Claire Robinson</pre>
             <h1>Receive money in any currency with no fees</h1>
@@ -126,7 +134,7 @@ function Home() {
         </figure>
 
         <figure  data-aos="fade-right">
-          <img src="./images/image-restaurant.jpg" alt=""/>
+          <img src={restaurant} alt=""/>
           <figcaption>
             <pre>By Wilson Hutton</pre>
             <h1>Treat yourself without worrying about money</h1>
@@ -138,7 +146,7 @@ function Home() {
         </figure>
 
         <figure  data-aos="fade-right">
-          <img src="./images/image-plane.jpg" alt=""/>
+          <img src={plane} alt=""/>
           <figcaption>
             <pre>By Wilson Hutton</pre>
             <h1>Take your Easybank card wherever you go</h1>
@@ -150,7 +158,7 @@ function Home() {
         </figure>
 
         <figure  data-aos="fade-right">
-          <img src="./images/image-confetti.jpg" alt=""/>
+          <img src={confettti} alt=""/>
           <figcaption>
             <pre>By Claire Robinson</pre>
             <h1>Our invite-only Beta accounts are now live!</h1>
@@ -168,27 +176,27 @@ function Home() {
    {/* <!-- Footer Section --> */}
 
    <footer>
-    <div class="footer_links">
-      <div class="link_1">
+    <div className="footer_links">
+      <div className="link_1">
         <ul>
           <li data-aos="flip-left">
-            <img src="./images/footer_logo.svg" alt=""/>
+            <img src={footerLogo} alt=""/>
           </li>
           <li>
             <ol data-aos="flip-left">
               <a href="javascript:void()">
                 <li><img src="./images/icon-facebook.svg" alt=""/></li>
               </a>
-              <li><a href="javascript:void()"><img src="./images/icon-youtube.svg" alt=""/></a></li>
-              <li><a href="javascript:void()"><img src="./images/icon-twitter.svg" alt=""/></a></li>
-              <li><a href="javascript:void()"><img src="./images/icon-pinterest.svg" alt=""/></a></li>
-              <li><a href="javascript:void()"><img src="./images/icon-instagram.svg" alt=""/></a></li>
+              <li><a href="javascript:void()"><img src={youtubeIcon} alt=""/></a></li>
+              <li><a href="javascript:void()"><img src={twitterIcon} alt=""/></a></li>
+              <li><a href="javascript:void()"><img src={pinterestIcon} alt=""/></a></li>
+              <li><a href="javascript:void()"><img src={instagramIcon} alt=""/></a></li>
             </ol>
           </li>
         </ul>
       </div>
 
-      <div class="link_2" data-aos="flip-left">
+      <div className="link_2" data-aos="flip-left">
         <ul>
           <li><a href="javascript:void()">About Us</a></li>
           <li><a href="javascript:void()">Contact</a></li>
@@ -196,7 +204,7 @@ function Home() {
         </ul>
       </div>
 
-      <div class="link_3" data-aos="flip-left">
+      <div className="link_3" data-aos="flip-left">
         <ul>
           <li><a href="javascript:void()">Careers</a></li>
           <li><a href="javascript:void()">Support</a></li>
@@ -206,7 +214,7 @@ function Home() {
 
     </div>
 
-    <div class="link_4" data-aos="flip-right">
+    <div className="link_4" data-aos="flip-right">
       <button id="btn_footer">Request Invite</button>
       <p>
         © Easybank. All Rights Reserved

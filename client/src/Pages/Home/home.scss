@@ -4,13 +4,6 @@ START!!!!!!!!!!!!
 #################
 */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style-type: none;
-    text-decoration: none;
-  }
   
   /* Variables */
   :root {
@@ -176,7 +169,7 @@ START!!!!!!!!!!!!
   
   
   .next_generation_image {
-    background: url(../images/bg-intro-desktop.svg) no-repeat center;
+    background: url(../.././assets/images/bg-intro-desktop.svg) no-repeat center;
     background-size: cover;
     height: 100vh;
     width: 100%;
@@ -378,7 +371,7 @@ START!!!!!!!!!!!!
     }
   
     .next_generation_image{
-      background: url(../images/bg-intro-mobile.svg) no-repeat center;
+      background: url(../.././assets/images/bg-intro-mobile.svg) no-repeat center;
       background-size: cover;
       width: 100%;
       right: 0px;

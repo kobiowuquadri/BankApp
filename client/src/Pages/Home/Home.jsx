@@ -25,7 +25,7 @@ function Home() {
       <nav className="navbar">
         <ul>
           <li><a href="#" className="nav_link">Home</a></li>
-          <li><a href="#" className="nav_link">About</a></li>
+          <li><a href="#about" className="nav_link">About</a></li>
           <li><a href="#" className="nav_link">Login</a></li>
         </ul>
         <a href="#"></a>
@@ -39,7 +39,7 @@ function Home() {
     <div className="navcard">
       <ul>
         <li><a href="#" className="navcard_link">Home</a></li>
-        <li><a href="#" className="navcard_link">About</a></li>
+        <li><a href="#about" className="navcard_link">About</a></li>
         <li><a href="#" className="navcard_link">Login</a></li>
       </ul>
     </div>
@@ -61,7 +61,7 @@ function Home() {
 
    {/* <!-- Why choose Easybank Section --> */}
    <div className="why_choose_easybank">
-     <div className="why_choose_easybank_content" data-aos="fade-right">
+     <div className="why_choose_easybank_content" data-aos="fade-right" id='about'>
        <h1>Why choose Easybank?</h1>
        <p>
         We leverage Open Banking to turn your bank account into your financial hub. Control

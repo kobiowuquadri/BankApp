@@ -22,15 +22,10 @@ const getOneUser = async (req, res) => {
     res.status(200).json({
       name: user.user_name,
       email: user.email,
-      address: user.full_addresse,
       id: user.id,
-      accountsCount: user.no_of_account,
       createdAt: user.createdAt,
       userStatus: user.user_status,
-      postal: user.zip_code,
       phone: user.phone,
-      accounts: user.accounts,
-      notifications: user.notifications,
     });
   } catch (error) {
     if (!user) return res.status(404).send("User Not Found!");
@@ -47,8 +42,6 @@ const createUser = async (req, res) => {
       email: req.body.email,
       password: hashedPassword,
       phone: req.body.phone,
-      full_addresse: req.body.addresse,
-      zip_code: req.body.postal,
     });
     res.status(201).json({
       id: user.id,
@@ -57,7 +50,7 @@ const createUser = async (req, res) => {
       token: generateUsersToken(user.id, user.email),
     });
   } catch (error) {
-    if (error.message.match(/(email|password|name|postal|phone|addresee)/gi)) {
+    if (error.message.match(/(email|password|name|phone)/gi)) {
       return res.status(400).send(error.message);
     }
     res.status(500).send("Ooops!! Something Went Wrong, Try again...");
@@ -108,10 +101,6 @@ const updateUser = async (req, res) => {
     user.markModified("password");
     user.phone = req.body.phone;
     user.markModified("phone");
-    user.full_addresse = req.body.addresse;
-    user.markModified("full_addresse");
-    user.zip_code = req.body.postal;
-    user.markModified("zip_code");
 
     //get updated user info & send it back
     const updatedUser = await user.save();
@@ -119,59 +108,18 @@ const updateUser = async (req, res) => {
     res.status(200).json({
       name: updatedUser.user_name,
       email: updatedUser.email,
-      address: updatedUser.full_addresse,
       id: updatedUser.id,
-      accountsCount: updatedUser.no_of_account,
       createdAt: updatedUser.createdAt,
       userStatus: updatedUser.user_status,
-      postal: updatedUser.zip_code,
-      phone: updatedUser.phone,
-      accounts: updatedUser.accounts,
-      notifications: updatedUser.notifications,
     });
   } catch (error) {
-    if (error.message.match(/(email|password|name|postal|phone|addresee)/gi))
+    if (error.message.match(/(email|password|name|phone)/gi))
       return res.status(400).send(error.message);
     res.status(500).send("Ooops!! Something Went Wrong, Try again...");
   }
 };
 
 
-const notificationUpdate = async (req, res) => {
-  try {
-    //get user
-    const user = req.user;
-    //update notification status
-    user.notifications = user.notifications.map((notification) => {
-      if (notification.id === req.params.id) {
-        return { ...notification, isSeen: true };
-      }
-      return notification;
-    });
-    user.markModified("notifications");
-
-    //get updated user info & send it back
-    const updatedUser = await user.save();
-
-    res.status(200).json({
-      name: updatedUser.user_name,
-      email: updatedUser.email,
-      address: updatedUser.full_addresse,
-      id: updatedUser.id,
-      accountsCount: updatedUser.no_of_account,
-      createdAt: updatedUser.createdAt,
-      userStatus: updatedUser.user_status,
-      postal: updatedUser.zip_code,
-      phone: updatedUser.phone,
-      accounts: updatedUser.accounts,
-      notifications: updatedUser.notifications,
-    });
-  } catch (error) {
-    if (error.message.match(/(notification)/gi))
-      return res.status(400).send(error.message);
-    res.status(500).send("Ooops!! Something Went Wrong, Try again...");
-  }
-};
 
 
 const deleteUser = async (req, res) => {
@@ -207,7 +155,7 @@ const updateUserStatus = async (req, res) => {
       user_status: updatedUser.user_status,
     });
   } catch (error) {
-    if (error.message.match(/(email|password|name|postal|phone|addresee)/gi))
+    if (error.message.match(/(email|password|name|phone|)/gi))
       return res.status(400).send(error.message);
     res.status(500).send("Ooops!! Something Went Wrong, Try again...");
   }
@@ -221,5 +169,4 @@ module.exports = {
   updateUser,
   deleteUser,
   updateUserStatus,
-  notificationUpdate,
 };

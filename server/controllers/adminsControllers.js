@@ -112,9 +112,6 @@ const updateAdmin = async (req, res) => {
   }
 };
 
-//@desc   >>>> UPDATE Owner
-//@route  >>>> PUT /api/admin/owner/:id
-//@Access >>>> private(Owner Only)
 const updateOwner = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);

@@ -12,10 +12,6 @@ const { connectToMongoose } = require("./config/db");
 //express json parser middleware
 app.use(express.json());
 
-const {
-  apiLimiter,
-} = require("./middlewares/rateLimitMiddleware/rateLimitMiddleware");
-app.use("/api", apiLimiter);
 
 //users Router
 const usersRoute = require("./routes/usersRoutes");

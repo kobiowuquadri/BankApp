@@ -20,7 +20,6 @@ const {
   deleteUser,
   userLogin,
   updateUserStatus,
-  notificationUpdate,
 } = require("../controllers/usersControllers");
 const {
   checkUserStatus,
@@ -49,6 +48,6 @@ router.route("/:id/updatestatus").put(authAdminProtect, updateUserStatus);
 
 router
   .route("/notifications/:id")
-  .put(authUserProtect, checkUserStatus, notificationUpdate);
+  .put(authUserProtect, checkUserStatus);
 
 module.exports = router;

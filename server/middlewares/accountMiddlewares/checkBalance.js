@@ -1,8 +1,5 @@
 const Account = require("../../models/accountModel");
 
-//check account balance is above requested (transfer or withdraw or deposit) money
-//@useCase:- when user updating his account balance (tranfer or withdraw or deposit)
-//@useCase:- when user create account with initital balance.
 const checkBalance = async (req, res, next) => {
   let requestedBalance;
   let accountId;
@@ -31,15 +28,11 @@ const checkBalance = async (req, res, next) => {
 
   //for account requests
   if (req.body.balance) {
-    //okay initial balance is >= 0
-    //procceed to next middleware
     return next();
   }
 
   //for deposit requests
   if (req.body.depositAmount) {
-    //okay deposited balance is > 0
-    //procceed to next middleware
     return next();
   }
 
@@ -61,7 +54,7 @@ const checkBalance = async (req, res, next) => {
 
     //compare balance with requested balance
     if (account.balance >= requestedBalance) {
-      //okay enough balance to proceed
+ 
       return next();
     } else {
       //not enough balance to (transfer or withdraw)

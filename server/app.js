@@ -12,11 +12,6 @@ const { connectToMongoose } = require("./config/db");
 //express json parser middleware
 app.use(express.json());
 
-//cors middleware
-const { corsProOptions } = require("./config/corsConfig");
-app.use(cors(corsProOptions));
-
-// Apply the rate limiting middleware to API calls only
 const {
   apiLimiter,
 } = require("./middlewares/rateLimitMiddleware/rateLimitMiddleware");
@@ -38,21 +33,16 @@ app.use("/api/account", accountRoute);
 const accountRequestRoute = require("./routes/accountRequestRoutes");
 app.use("/api/request", accountRequestRoute);
 
-//serve Frontend
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
-  app.get("*", (req, res) =>
-    res.sendFile(
-      path.resolve(__dirname, "../", "Frontend", "dist", "index.html")
-    )
-  );
-}
+app.get('/', (req, res) => {
+  res.send('Hello Welcome to my Bank APP Backend')
+})
+
 
 connectToMongoose()
   .then(() => {
     app.listen(process.env.PORT || 5000, () => {
-      console.log("server is running");
+      console.log(`Server is running on Port ${process.env.PORT}`);
     });
   })
   .catch((err) => {

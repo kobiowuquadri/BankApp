@@ -8,10 +8,9 @@ const connectToMongoose = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log(`Connected to Database on ${db.connection.host}`);
+    console.log('Connected to Database');
   } catch (error) {
-    console.log(error);
-    process.exit(1);
+    console.log(error.message);
   }
 };
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import './home.scss'
+import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logo.svg'
 import mockUp from '../../assets/images/image-mockups.png'
 import online from '../../assets/images/icon-online.svg'
@@ -22,27 +23,16 @@ function Home() {
     <div>
       <header>
       <img src={logo} alt="" />
-      <nav className="navbar">
+      <nav className="nav_bar">
         <ul>
           <li><a href="#" className="nav_link">Home</a></li>
           <li><a href="#about" className="nav_link">About</a></li>
-          <li><a href="#" className="nav_link">Login</a></li>
+          <li><Link className='nav_link' to={'/login'}>Login</Link></li>
         </ul>
-        <a href="#"></a>
       </nav>
-      <button id="btn_request">Register</button>
-      <div id="menu">
-
-      </div>
+      
+      <button id="btn_request"><Link to={'/register'}>Register</Link></button>
     </header>
-
-    <div className="navcard">
-      <ul>
-        <li><a href="#" className="navcard_link">Home</a></li>
-        <li><a href="#about" className="navcard_link">About</a></li>
-        <li><a href="#" className="navcard_link">Login</a></li>
-      </ul>
-    </div>
 
     {/* <!--  Next generation Section --> */}
    <div className="next_generation">

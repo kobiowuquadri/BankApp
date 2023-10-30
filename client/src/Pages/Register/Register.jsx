@@ -26,7 +26,7 @@ function Register() {
 
   const submitHandle = async (e) => {
     e.preventDefault();
-
+    
     await axios.post('http://localhost:5000/signup', {
       username,
       email,

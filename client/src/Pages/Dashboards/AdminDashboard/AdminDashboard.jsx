@@ -24,7 +24,7 @@ function AdminDashboard() {
     <div className='board'>
        <Slidebar/>
        <div className='main__board'>
-       <h1 className='text-white'>WELCOME TO ADMIN DASHBOARD</h1>
+       <h1 className='text-white'>ADMIN DASHBOARD</h1>
           <MDBTable align='middle'>
           <MDBTableHead className='text-white'>
             <tr>

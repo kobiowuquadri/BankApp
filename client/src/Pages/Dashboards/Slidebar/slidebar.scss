@@ -37,6 +37,14 @@
   
   @media (max-width: 992px) {
     .sidebar {
+      top: 20px;
+      width: 100%;
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      margin-top: 35px;
+    }
+    .main__board {
       width: 100%;
     }
   }

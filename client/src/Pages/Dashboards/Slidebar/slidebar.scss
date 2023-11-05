@@ -1,4 +1,16 @@
+.board {
+  width: 100%;
+  position: relative;
+}
 
+.main__board {
+  width: 80%;
+  background-color: green;
+  color: white;
+  position: absolute;
+  right: 0;
+  padding: 20px;
+}
   
   @media (min-width: 992px) {
     .sidebar {
@@ -15,7 +27,7 @@
     padding: 58px 0 0;
     /* Height of navbar */
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-    width: 240px;
+    width: 20%;
     /* z-index: 600; */
   }
   

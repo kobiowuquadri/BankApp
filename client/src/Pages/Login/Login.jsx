@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import loginBg from '../../assets/images/bg_login.jpeg'
@@ -16,31 +16,40 @@ import {
 } from 'mdb-react-ui-kit'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+ 
+'react-router-dom';
+import { useAuth } from '../../Context/AuthContext'
+
 
 function Login () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
+  const { login } = useAuth()
+  
 
 
   const submitHandle = async e => {
     e.preventDefault()
 
-    
     try {
       const response = await axios.post('http://localhost:5000/signin', {
         email,
-        password,
-        role
-      })
-      
-      const user = response.data
-      if(user){
-        localStorage.setItem("customer", JSON.stringify({email, role: user.role}))
+        password
+      });
+
+      const user = response.data;
+      login(user);
+      console.log(user);
+
+      if (user?.user?.role === 'customer') {
+        navigate('/customerdashboard');
+      } else if (user?.user?.role === 'admin') {
+        navigate('/admindashboard');
       }
-      navigate('/customerdashboard')
-    } catch {
-      alert('Wrong Credentials')
+    } catch (err) {
+      alert('Wrong Credentials');
+      console.error(err.message);
     }
   }
 

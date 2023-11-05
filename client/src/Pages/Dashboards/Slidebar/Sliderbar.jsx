@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom'
 import './slidebar.scss'
 import {
   MDBContainer,
@@ -125,12 +126,14 @@ const Slidebar = () =>  {
               <MDBIcon icon='bars' fas />
             </MDBNavbarToggler>
             <MDBNavbarBrand href='#'>
-              <img
+             <Link to='/'>
+             <img
                 src={logoIcon}
                 height='30'
                 alt=''
                 loading='lazy'
               />
+             </Link>
             </MDBNavbarBrand>
 
             <MDBCollapse navbar>

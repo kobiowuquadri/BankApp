@@ -30,7 +30,7 @@ function Register() {
     await axios.post('http://localhost:5000/signup', {
       username,
       email,
-      password,
+      password
     });
 
     navigate('/login');

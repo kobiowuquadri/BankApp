@@ -1,12 +1,11 @@
 const express = require('express')
-const { SignIn, signUp } = require('../Controllers/userController.js')
+const { signInUser, creditAnotherUser } = require('../Controllers/userController.js')
+const userRouter = express.Router()
 
-const router = express.Router()
+// // Signin
+userRouter.post('/signin', signInUser)
 
-// Signin
-router.post('/signin', SignIn)
+// credit other user
+userRouter.put('tranfer-funds', creditAnotherUser)
 
-// signup
-router.post('/signup', signUp)
-
-module.exports = router
+module.exports = userRouter

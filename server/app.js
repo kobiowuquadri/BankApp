@@ -1,7 +1,9 @@
 const express = require('express')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 const connectToDB = require('./Database/db.js')
-const router = require('./Routes/UserRoutes.js')
+const adminRouter = require('./Routes/adminRoutes.js')
+const userRouter = require('./Routes/UserRoutes.js')
 const app = express()
 require('dotenv').config()
 
@@ -15,12 +17,14 @@ app.use(
     credentials: true
   })
 )
+
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
+app.use(cookieParser());
 // Routes
-app.use(router)
-
+app.use("/api/v1", adminRouter)
+app.use('/api/v1', userRouter)
 connectToDB()
 
 app.listen(port, () => {

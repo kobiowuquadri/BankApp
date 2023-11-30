@@ -1,7 +1,7 @@
 const userModel = require('../Models/userModel')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const generateAccctNumber = require('../Utils/generateAcctNumber')
+const {generateAccctNumber} = require('../Utils/generateAcctNumber')
 const nodemailer = require("nodemailer");
 
 
@@ -67,15 +67,13 @@ const signInAdmin = async (req, res) => {
 }
 
 
+
 const createUserAccount = async (req, res) => {
     try{
        const {role, username, email, address, NIN_Number} = req.body
        const acctNumber = await generateAccctNumber()
-       const isExistingAcctNumber = await userModel.findOne({accountNumber})
-       if(isExistingAcctNumber){
-        return res.status(409).send({message: 'This account number already exists.'})
-       }
-       const hashPassword = await bcrypt.hash(acctNumber, 10)
+       console.log(acctNumber)
+       const hashPassword = await bcrypt.hash(acctNumber.toString(), 10)
        const newUser = new userModel({
         role,
         username,
@@ -85,6 +83,10 @@ const createUserAccount = async (req, res) => {
         accountNumber: acctNumber,
         password:hashPassword
        })
+      //  const isExistingAcctNumber = await userModel.findOne({accountNumber})
+      //  if(isExistingAcctNumber){
+      //   return res.status(409).send({message: 'This account number already exists.'})
+      //  }
        const savedUser = await newUser.save()
 
        const transporter = nodemailer.createTransport({
@@ -94,7 +96,7 @@ const createUserAccount = async (req, res) => {
         secure: true,
         auth: {
           user: process.env.USER,
-          pass: process.env.PASSWORD,
+          pass: process.env.PASSWORD
         },
       });
 
@@ -119,6 +121,16 @@ const createUserAccount = async (req, res) => {
     console.log(err)
     res.status(400).json({success: false, msg: err.message})
     }
+}
+
+const showAllUsers = async (req, res) => {
+  try{
+     const user = await userModel.find()
+     res.status(200).json({success: true, message: "all users", user})
+  }
+  catch(err){
+    console.log(err.message)
+  }
 }
 
 const creditUserAccount = async (req, res)=> {
@@ -148,4 +160,4 @@ const creditUserAccount = async (req, res)=> {
 
 
 
-module.exports = {signUpAdmin, signInAdmin, createUserAccount, creditUserAccount}
+module.exports = {signUpAdmin, signInAdmin, createUserAccount, creditUserAccount, showAllUsers}

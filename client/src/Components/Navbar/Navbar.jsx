@@ -19,8 +19,7 @@ function Navbar() {
         {
           !user ? (
             <>
-              <li><Link className='nav_link' to={'/login'}>Login</Link></li>
-            <li><Link className='nav_link' to={'/register'}>Register</Link></li>
+              <li><Link className='nav_link' to={'/customer'}>Login</Link></li>
             </>
           ) : (
            <>

@@ -1,35 +1,36 @@
-import React from 'react'
+import React, {useState} from 'react'
+import loginBg from '../../../../assets/images/bg_login.jpeg'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBInput,
+  MDBIcon
+} from 'mdb-react-ui-kit'
+import { signInCustomer } from '../../../../Hooks/Api/userApi'
+
+
 
 function CustomerLogin() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
     const navigate = useNavigate()
-    const { login } = useAuth()
+    // const { login } = useAuth()
     
   
   
-    const submitHandle = async e => {
+    const submitHandle = async (e) => {
       e.preventDefault()
-  
-      try {
-        const response = await axios.post('http://localhost:5000/signin', {
-          email,
-          password
-        });
-  
-        const user = response.data;
-        login(user);
-        console.log(user);
-  
-        if (user?.user?.role === 'customer') {
-          navigate('/customerdashboard');
-        } else if (user?.user?.role === 'admin') {
-          navigate('/admindashboard');
-        }
-      } catch (err) {
-        alert('Wrong Credentials');
-        console.error(err.message);
-      }
+        await signInCustomer({email, password})
+
+        navigate('/customer/dashboard')
     }
   
     return (
@@ -81,14 +82,6 @@ function CustomerLogin() {
                 >
                   Login
                 </MDBBtn>
-                <p>
-                  Don't have an Account{' '}
-                  <Link to={'/register'}>
-                    <b style={{ borderBottom: '2px solid green' }}>
-                      Create Account
-                    </b>
-                  </Link>{' '}
-                </p>
               </MDBCol>
   
               <MDBCol

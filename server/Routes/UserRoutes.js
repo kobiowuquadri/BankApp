@@ -6,6 +6,6 @@ const userRouter = express.Router()
 userRouter.post('/signin', signInUser)
 
 // credit other user
-userRouter.put('tranfer-funds', creditAnotherUser)
+userRouter.put('/tranfer-funds', creditAnotherUser)
 
 module.exports = userRouter

@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 
 const period = 1000 * 60 * 60 * 24 * 3
 
-const signUpAdmin = async (req, ress) => {
+const signUpAdmin = async (req, res) => {
   try {
     const {role, username, email, address, password} = req.body
     // check if admin exist
@@ -54,7 +54,8 @@ const signInAdmin = async (req, res) => {
         if(err){
             throw new Error(err)
         }
-        res.cookie("adminLogin", token, {maxAge:period, httpOnly: true})
+        res.cookie("adminLogin", token, {maxAge: period, httpOnly: true});
+        console.log('Generated Token:', token);
         res.status(200).json({success: true, message: "Admin login successfully", token, emailExist})
     })
 
@@ -74,7 +75,7 @@ const createUserAccount = async (req, res) => {
        if(isExistingAcctNumber){
         return res.status(409).send({message: 'This account number already exists.'})
        }
-       const hashPassword = bcrypt.hash(acctNumber, 10)
+       const hashPassword = await bcrypt.hash(acctNumber, 10)
        const newUser = new userModel({
         role,
         username,
@@ -122,17 +123,17 @@ const createUserAccount = async (req, res) => {
 
 const creditUserAccount = async (req, res)=> {
   try{
-     const {accountNumber, account} = req.body
+     const {accountNumber, amount} = req.body
      let user = await userModel.findOne({accountNumber});
      const prevBalance = user.accountBalance
      const newBalance = prevBalance + Number(amount)
      if(user){
        let updatedAcctBanlance = await userModel.findOneAndUpdate({accountNumber}, {
-        accountBalance: result
+        accountBalance: newBalance
       })
       res.status(202).json({
         success: true,
-        updatedAcctBalance
+        updatedAcctBanlance
       })
      }else {
       throw new Error('This user does not exist.')

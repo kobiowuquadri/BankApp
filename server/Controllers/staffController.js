@@ -8,63 +8,48 @@ const nodemailer = require("nodemailer");
 
 const period = 1000 * 60 * 60 * 24 * 3
 
-const signUpAdmin = async (req, res) => {
-  try {
-    const {role, username, email, address, password} = req.body
-    // check if admin exist
-    const existingAdmin = await userModel.findOne({email})
-    if(existingAdmin){
-        throw new Error("This admin already exist.")
-    }
-    const hashPassword = await bcrypt.hash(password, 10)
-    const newAdmin = new userModel({
-       role,
-       username,
-       email,
-       address,
-       password: hashPassword
-    })
-   const savedAdmin = await newAdmin.save()
-   console.log(savedAdmin)
-    res.status(201).json({success: true, message: "Admin created successfully", savedAdmin})
-    console.log(newAdmin)
-  }
-  catch(err){
-    console.log(err)
-    res.status(400).json({success: false, msg: err.message})
-  }
 
-}
-
-const signInAdmin = async (req, res) => {
-  try{
-    const {email, password} = req.body
-    const emailExist = await userModel.findOne({email})
-    if(!emailExist){
-        return res.status(400).send({success: false, message:"Email does not exist"});
-    }
-
-    const isMatched = await bcrypt.compare(password, emailExist.password);
-    if (!isMatched){
-        return res.status(400).send({success: false, message:'Invalid Password'})
-    }
-    jwt.sign({id: emailExist._id}, process.env.SECRET_KEY, {
-        expiresIn:"1d"
-    }, async(err, token)=>{
-        if(err){
-            throw new Error(err)
+const signInStaff = async (req, res) => {
+    try {
+      const { email, password } = req.body;
+  
+      const user = await userModel.findOne({ email });
+      if (!user) {
+        return res.status(401).json({ message: 'Invalid Email or Password' });
+      }
+  
+      const isValidPass = await bcrypt.compare(password, user.password);
+  
+      if (!isValidPass) {
+        return res.status(401).json({ message: 'Invalid Password' });
+      }
+  
+      jwt.sign(
+        { userid: user._id },
+        process.env.SECRET_KEY,
+        {
+          expiresIn: '1d',
+        },
+        async (err, token) => {
+          if (err) {
+            throw new Error(err);
+          }
+          res.cookie('staffId', user._id, { maxAge: period, httpOnly: true });
+          res.status(200).json({
+            success: true,
+            message: 'Authentication Successful',
+            user,
+          });
         }
-        res.cookie("adminLogin", token, {maxAge: period, httpOnly: true});
-        console.log('Generated Token:', token);
-        res.status(200).json({success: true, message: "Admin login successfully", token, emailExist})
-    })
-
-  }
-  catch(err){
-    console.log(err)
-    res.status(400).json({success: false, msg: err.message})
-  }
-}
+      );
+    } catch (err) {
+      console.error(err);
+      res.status(404).json({
+        success: false,
+        msg: err.message,
+      });
+    }
+  };
 
 
 
@@ -156,38 +141,6 @@ const creditUserAccount = async (req, res)=> {
   }
 }
 
-const deleteUserAccount = async (req, res) => {
-  try {
-    const id = req.params.id;
-
-    if (!id) {
-      throw new Error("User ID is undefined");
-    }
-
-    const deletedUser = await userModel.findByIdAndDelete(id);
-
-    if (deletedUser) {
-      res.status(200).json({
-        success: true,
-        message: "User deleted successfully",
-        deletedUser,
-      });
-    } else {
-      throw new Error("User not found");
-    }
-  } catch (err) {
-    console.error(err.message);
-    res.status(404).json({
-      success: false,
-      msg: err.message,
-    });
-  }
-};
 
 
-
-
-
-
-
-module.exports = {signUpAdmin, signInAdmin, createUserAccount, creditUserAccount, showAllUsers, deleteUserAccount}
+module.exports = {signInStaff, createUserAccount, creditUserAccount, showAllUsers}

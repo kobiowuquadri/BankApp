@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const connectToDB = require('./Database/db.js')
 const adminRouter = require('./Routes/adminRoutes.js')
 const userRouter = require('./Routes/UserRoutes.js')
+const  staffRouter = require('./Routes/staffRoutes.js')
 const app = express()
 require('dotenv').config()
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 // Routes
 app.use("/api/v1", adminRouter)
 app.use('/api/v1', userRouter)
+app.use('/api/v1',  staffRouter)
 connectToDB()
 
 app.listen(port, () => {

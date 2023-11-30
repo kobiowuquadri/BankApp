@@ -7,22 +7,10 @@ import CustomerDashboard from './Pages/Dashboards/CustomerDashboard/CustomerDash
 import AdminDashboard from './Pages/Dashboards/AdminDashboard/AdminDashboard'
 import RegisterAdmin from './Pages/Dashboards/AdminDashboard/RegisterAdmin/RegisterAdmin'
 import LoginAdmin from './Pages/Dashboards/AdminDashboard/LoginAdmin/LoginAdmin'
-import { useAuth } from './Context/AuthContext'
-import CreateStaff from './Pages/Dashboards/AdminDashboard/CreateStaff'
+import CreateUser from './Pages/Dashboards/AdminDashboard/CreateUser/CreateUser'
+import DepositUser from './Pages/Dashboards/AdminDashboard/DepositUser/DepositUser'
 
 function App () {
-  // const { user } = useAuth()
-  // console.log(user?.user?.role)
-
-  // useEffect(() => {
-  //   if (user) {
-  //     if (user.role === 'customer') {
-  //       return <Navigate to={'/customerdashboard'} />
-  //     } else if (user.role === 'admin') {
-  //       return <Navigate to={'/admindashboard'} />
-  //     }
-  //   }
-  // }, [user])
 
   return (
     <>
@@ -30,23 +18,14 @@ function App () {
         <Route index element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        {/* <Route
-          path='/customerdashboard'
-          element={
-            user && user?.user?.role === 'customer' ? (
-              <CustomerDashboard />
-            ) : (
-              <Navigate to={'/login'} />
-            )
-          }
-        >
-        </Route> */}
-        <Route path='admin' element={<Outlet />}>
-          <Route index element={<RegisterAdmin/>}></Route>
-          <Route path='login' element={<LoginAdmin/>}></Route>
-          <Route path='dashboard' element={<AdminDashboard/>}></Route>
-           {/* <Route path='login' element={user && user?.user?.role === 'admin' ? <AdminDashboard /> : <Navigate to={'/login'}/>}></Route> */}
-           {/* <Route path='createstaff' element={user && user?.user?.role === 'admin' ? <CreateStaff/> : <Navigate to={'/login'}/>}></Route> */}
+        <Route path='/admin' element={<Outlet />}>
+          <Route index element={<RegisterAdmin />}></Route>
+          <Route path='login' element={<LoginAdmin />}></Route>
+          <Route path='dashboard' element={<Outlet />}>
+            <Route index element={<AdminDashboard />}></Route>
+            <Route path='createuser' element={<CreateUser />}></Route>
+            <Route path='deposituser' element={<DepositUser />}></Route>
+          </Route>
         </Route>
       </Routes>
     </>

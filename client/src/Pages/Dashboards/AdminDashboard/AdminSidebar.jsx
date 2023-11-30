@@ -40,7 +40,7 @@ function AdminSidebar() {
             <MDBRipple rippleTag='span'>
               <MDBListGroupItem
                 tag='a'
-                href='/admindashboard'
+                href='/admin/dashboard'
                 action
                 style={{ backgroundColor: 'green' }}
                 active
@@ -53,12 +53,23 @@ function AdminSidebar() {
             <MDBRipple rippleTag='span'>
               <MDBListGroupItem
                 tag='a'
-                href='#'
+                href='/admin/dashboard/createuser'
                 action
                 className='border-0 border-bottom rounded'
               >
                 <MDBIcon fas icon='building me-3' />
-                Transaction History
+                Create User
+              </MDBListGroupItem>
+            </MDBRipple>
+            <MDBRipple rippleTag='span'>
+              <MDBListGroupItem
+                tag='a'
+                href='/admin/dashboard/deposituser'
+                action
+                className='border-0 border-bottom rounded'
+              >
+                <MDBIcon fas icon='building me-3' />
+                Create User
               </MDBListGroupItem>
             </MDBRipple>
 

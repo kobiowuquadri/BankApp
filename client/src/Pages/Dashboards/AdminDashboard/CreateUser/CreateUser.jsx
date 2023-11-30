@@ -13,25 +13,30 @@ import {
   MDBInput,
   MDBIcon
 } from 'mdb-react-ui-kit'
-import { signUpAdmin } from '../../../../Hooks/Api/adminApi'
+import { createNewUser } from '../../../../Hooks/Api/adminApi'
+import AdminSidebar from '../AdminSidebar'
 
-function RegisterAdmin () {
-  const [role, setRole] = useState('')
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [address, setAddress] = useState('')
-  const navigate = useNavigate()
+function CreateUser() {
 
-  const submitHandle = async () => {
-
-    await signUpAdmin({ role, username, email, password, address })
-
-    navigate('/admin/login')
-  }
+    const [role, setRole] = useState('')
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [NIN_Number, setNIN_Number] = useState('')
+    const [address, setAddress] = useState('')
+    // const navigate = useNavigate()
+  
+    const submitHandle = async () => {
+  
+      await createNewUser({ role, username, email, address, NIN_Number })
+  
+      alert('User Created Successfully')
+    }
 
   return (
-    <MDBContainer fluid>
+    <div className='board'>
+      <AdminSidebar/>
+      <div className='main__board'>
+      <MDBContainer fluid className=''>
       <MDBCard className='text-black m-5' style={{ borderRadius: '25px' }}>
         <MDBCardBody>
           <MDBRow>
@@ -42,7 +47,7 @@ function RegisterAdmin () {
             >
            
               <p className='text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4'>
-                Register New Admin
+                Create New User
               </p>
 
               <div className='d-flex flex-row align-items-center mb-4 '>
@@ -98,12 +103,12 @@ function RegisterAdmin () {
               <div className='d-flex flex-row align-items-center mb-4'>
                 <MDBIcon fas icon='lock me-3' size='lg' />
                 <MDBInput
-                  label='Password'
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  name='password'
+                  label='NIN_Number'
+                  value={NIN_Number}
+                  onChange={e => setNIN_Number(e.target.value)}
+                  name='NIN_Number'
                   id='form3'
-                  type='password'
+                  type='number'
                 />
               </div>
 
@@ -115,14 +120,6 @@ function RegisterAdmin () {
               >
                 Register
               </MDBBtn>
-              <p>
-                Already have an Account{' '}
-                <Link to={'/admin/login'}>
-                  <b style={{ borderBottom: '2px solid green' }}>
-                    Login to your account
-                  </b>
-                </Link>{' '}
-              </p>
             </MDBCol>
 
             <MDBCol
@@ -136,7 +133,10 @@ function RegisterAdmin () {
         </MDBCardBody>
       </MDBCard>
     </MDBContainer>
+      </div>
+    </div>
+   
   )
 }
 
-export default RegisterAdmin
+export default CreateUser

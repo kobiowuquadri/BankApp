@@ -51,4 +51,26 @@ export const depositUser = async (payload) => {
    return response
 }
 
+// export const deleteUserAccount = async (id) => {
+//    const adminAccessToken = localStorage.getItem('adminAccessToken');
 
+//    try {
+//       const response = await axios.delete(
+//          `http://localhost:5000/api/v1/delete-user/${id}`,
+//          {
+//             withCredentials: true,
+//             headers: {
+//                Accept: 'application/json',
+//                'Content-Type': 'application/json',
+//                Authorization: `Bearer ${adminAccessToken}`,
+//             },
+//          }
+//       );
+
+//       console.log(response.data);
+//       return response.data;
+//    } catch (error) {
+//       console.error(error);
+//       throw error;
+//    }
+// };

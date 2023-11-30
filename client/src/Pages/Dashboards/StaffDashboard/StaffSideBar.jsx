@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {  MDBContainer,
     MDBNavbar,
     MDBNavbarBrand,
@@ -22,16 +22,11 @@ import {  MDBContainer,
 } from 'mdb-react-ui-kit'
 import logoIcon from '../../../assets/images/logo.svg'
 
-function AdminSidebar() {
+function StaffSidebar() {
     const [showShow, setShowShow] = useState(false)
 
     const toggleShow = () => setShowShow(!showShow)
-    const navigate = useNavigate()
 
-    const handleLogout = () => {
-      localStorage.removeItem('adminAccessToken'); 
-      navigate('/admin/login'); 
-    };
 
   return (
     <>
@@ -45,7 +40,7 @@ function AdminSidebar() {
             <MDBRipple rippleTag='span'>
               <MDBListGroupItem
                 tag='a'
-                href='/admin/dashboard'
+                href='/staff/dashboard'
                 action
                 style={{ backgroundColor: 'green' }}
                 active
@@ -58,7 +53,7 @@ function AdminSidebar() {
             <MDBRipple rippleTag='span'>
               <MDBListGroupItem
                 tag='a'
-                href='/admin/dashboard/createuser'
+                href='/staff/dashboard/createuser'
                 action
                 className='border-0 border-bottom rounded'
               >
@@ -69,7 +64,7 @@ function AdminSidebar() {
             <MDBRipple rippleTag='span'>
               <MDBListGroupItem
                 tag='a'
-                href='/admin/dashboard/deposituser'
+                href='/staff/dashboard/deposituser'
                 action
                 className='border-0 border-bottom rounded'
               >
@@ -78,14 +73,14 @@ function AdminSidebar() {
               </MDBListGroupItem>
             </MDBRipple>
 
-            <MDBRipple rippleTag='span' onClick={handleLogout}>
+            <MDBRipple rippleTag='span'>
               <MDBListGroupItem
                 tag='a'
+                href='#'
                 action
                 className='border-0 rounded'
-                
               >
-                <MDBIcon fas icon='money-bill me-3' style={{color: 'red'}} />
+                <MDBIcon fas icon='money-bill me-3' />
                  Logout
               </MDBListGroupItem>
             </MDBRipple>
@@ -197,4 +192,4 @@ function AdminSidebar() {
   )
 }
 
-export default AdminSidebar
+export default StaffSidebar

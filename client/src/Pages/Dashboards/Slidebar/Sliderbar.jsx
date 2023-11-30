@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import './slidebar.scss'
 import {
   MDBContainer,
@@ -29,6 +29,12 @@ const Slidebar = () =>  {
   const [showShow, setShowShow] = useState(false);
 
   const toggleShow = () => setShowShow(!showShow);
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem('adminAccessToken'); 
+    navigate('/customer'); 
+  };
 
   return (
     <>
@@ -36,16 +42,27 @@ const Slidebar = () =>  {
         <div className="position-sticky">
           <MDBListGroup flush className="mx-3 mt-4">
             <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action active style={{backgroundColor:"green"}} className='border-0 border-bottom rounded rounded'>
+              <MDBListGroupItem tag='a' href='/customer/dashboard' action active style={{backgroundColor:"green"}} className='border-0 border-bottom rounded rounded'>
                 <MDBIcon fas icon="tachometer-alt me-3" />
                 Profile
               </MDBListGroupItem>
             </MDBRipple>
 
             <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'   aria-current='true'>
+              <MDBListGroupItem tag='a' href='/customer/transfer' action className='border-0 border-bottom rounded'   aria-current='true'>
                 <MDBIcon fas icon="chart-area me-3" />
                 Transfer Money
+              </MDBListGroupItem>
+            </MDBRipple>
+            <MDBRipple rippleTag='span' onClick={handleLogout}>
+              <MDBListGroupItem
+                tag='a'
+                action
+                className='border-0 rounded'
+                
+              >
+                <MDBIcon fas icon='money-bill me-3' style={{color: 'red'}} />
+                 Logout
               </MDBListGroupItem>
             </MDBRipple>
 

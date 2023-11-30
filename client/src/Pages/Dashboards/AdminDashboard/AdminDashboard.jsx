@@ -9,6 +9,7 @@ import {
   MDBTableBody
 } from 'mdb-react-ui-kit'
 import AdminSidebar from './AdminSidebar'
+// import { deleteUserAccount } from '../../../Hooks/Api/adminApi'
 
 function AdminDashboard () {
   const [allUsers, setAllUsers] = useState([])
@@ -28,16 +29,35 @@ function AdminDashboard () {
           }
         }
       )
-      console.log(response?.data?.users)
+      console.log(response?.data?.user)
       setAllUsers(response?.data?.user)
     } catch (err) {
       console.error(err.message)
     }
   }
 
+  const deleteUser = async (id) => {
+    try {
+      const adminAccessToken = localStorage.getItem('adminAccessToken');
+      await axios.delete(`http://localhost:5000/api/v1/delete-user/${id}`, {
+        withCredentials: true,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${adminAccessToken}`
+        }
+      });
+
+      // Refresh the user list after deletion
+      displayUsers();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    displayUsers()
-  }, [])
+    displayUsers();
+  }, []);
 
   return (
     <div className='board'>
@@ -98,6 +118,15 @@ function AdminDashboard () {
                       {users.accountBalance}
                     </p>
                   </td>
+                  <td>
+                  <MDBBtn
+                    color='danger'
+                    size='sm'
+                    onClick={() => deleteUser(users.id)}
+                  >
+                    Delete
+                  </MDBBtn>
+                </td>
                 </tr>
               )
             })}

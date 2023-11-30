@@ -36,81 +36,19 @@ const Slidebar = () =>  {
         <div className="position-sticky">
           <MDBListGroup flush className="mx-3 mt-4">
             <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded rounded'>
+              <MDBListGroupItem tag='a' href='#' action active style={{backgroundColor:"green"}} className='border-0 border-bottom rounded rounded'>
                 <MDBIcon fas icon="tachometer-alt me-3" />
-                Main Dashboard
+                Profile
               </MDBListGroupItem>
             </MDBRipple>
 
             <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded' style={{backgroundColor:"green"}} active aria-current='true'>
+              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'   aria-current='true'>
                 <MDBIcon fas icon="chart-area me-3" />
-                Website traffic
+                Transfer Money
               </MDBListGroupItem>
             </MDBRipple>
 
-            <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-                <MDBIcon fas icon="lock me-3" />
-                Password
-              </MDBListGroupItem>
-            </MDBRipple>
-
-            <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-                <MDBIcon fas icon="chart-line me-3" />
-                Analitics
-              </MDBListGroupItem>
-            </MDBRipple>
-
-            <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-                <MDBIcon fas icon="chart-pie me-3" />
-                SEO
-              </MDBListGroupItem>
-            </MDBRipple>
-
-            <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-                <MDBIcon far icon="chart-bar me-3" />
-                Orders
-              </MDBListGroupItem>
-            </MDBRipple>
-
-            <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-                <MDBIcon fas icon="globe me-3" />
-                International
-              </MDBListGroupItem>
-            </MDBRipple>
-
-            <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-                <MDBIcon fas icon="building me-3" />
-                Partners
-              </MDBListGroupItem>
-            </MDBRipple>
-
-            <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-                <MDBIcon fas icon="calendar me-3" />
-                Calendar
-              </MDBListGroupItem>
-            </MDBRipple>
-
-            <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-                <MDBIcon fas icon="users me-3" />
-                User
-              </MDBListGroupItem>
-            </MDBRipple>
-
-            <MDBRipple rippleTag='span'>
-              <MDBListGroupItem tag='a' href='#' action className='border-0 rounded'>
-                <MDBIcon fas icon="money-bill me-3" />
-                Sales
-              </MDBListGroupItem>
-            </MDBRipple>
           </MDBListGroup>
         </div>
       </MDBCollapse>

@@ -11,6 +11,23 @@
   right: 0;
   padding: 20px;
 }
+
+.main__board2 {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+
+  form {
+    width: 500px;
+    // margin: 0 auto;
+
+ 
+
+  }
+}
   
   @media (min-width: 992px) {
     .sidebar {

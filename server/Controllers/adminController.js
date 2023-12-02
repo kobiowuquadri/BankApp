@@ -98,10 +98,11 @@ const createUserAccount = async (req, res) => {
           user: process.env.USER,
           pass: process.env.PASSWORD
         },
+        from: "kobiowuq@gmail.com"
       });
 
       const info = await transporter.sendMail({
-        from: '"Easy Bank 👻" <noreply@example.com>', // sender address
+        from: '"Easy Bank 👻" <kobiowuq@gmail.com>', // sender address
         to: email, // list of receivers
         subject: "Account Created Successfully", // Subject line
         html: `

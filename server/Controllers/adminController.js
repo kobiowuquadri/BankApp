@@ -188,7 +188,4 @@ const deleteUserAccount = async (req, res) => {
 
 
 
-
-
-
 module.exports = {signUpAdmin, signInAdmin, createUserAccount, creditUserAccount, showAllUsers, deleteUserAccount}

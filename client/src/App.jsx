@@ -14,7 +14,11 @@ import StaffDashboard from './Pages/Dashboards/StaffDashboard/StaffDashboard'
 import StaffCreateUser from './Pages/Dashboards/StaffDashboard/CreateUser/CreateUser'
 import StaffDepositUser from './Pages/Dashboards/StaffDashboard/DepositUser/DepositUser'
 
+const admin = JSON.parse(localStorage.getItem('adminAccessToken'))
+console.log(admin)
+
 function App () {
+
 
   return (
     <>
@@ -28,7 +32,7 @@ function App () {
         <Route path='/admin' element={<Outlet />}>
           <Route index element={<RegisterAdmin />}></Route>
           <Route path='login' element={<LoginAdmin />}></Route>
-          <Route path='dashboard' element={<Outlet />}>
+          <Route path='dashboard' element={admin ? <AdminDashboard /> : <Navigate to={'/admin/login'}/>}>
             <Route index element={<AdminDashboard />}></Route>
             <Route path='createuser' element={<CreateUser />}></Route>
             <Route path='deposituser' element={<DepositUser />}></Route>

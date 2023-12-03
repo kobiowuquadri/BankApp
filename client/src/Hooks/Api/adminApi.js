@@ -12,9 +12,10 @@ export const signInAdmin = async (payload) => {
    const response = await axios.post('http://localhost:5000/api/v1/signin-admin', payload, {
       withCredentials: true,
    })
-
+   const result = await response.data
+   console.log(result)
    const { token } = response?.data
-   localStorage.setItem('adminAccessToken', token);
+   localStorage.setItem('adminAccessToken', JSON.stringify(result.token));
    console.log(response)
    return response
 }
